@@ -110,7 +110,7 @@ public class TRAI_26_t4_5_skeleton {
             boolean onsama = false;
 
             for (Integer y : array2) {
-                if (x == y) {
+                if (Objects.equals(x, y)) {
                     onsama = true;
                     break;
                 }

@@ -148,7 +148,7 @@ public class TRAI_26_X1_test {
         HashSet<Integer> hs = new HashSet<>();
         int i = 0;
         while (i < n) {
-            Integer x = min + rnd.nextInt(2 + n*3);
+            Integer x = Integer.valueOf(min + rnd.nextInt(2 + n*3));
             if (hs.add(x))
                 A[i++] = x; // new element
             else if (onlyOneDuplicate && duplicates) { // poista kommenttimerkit jos vain yksi duplikaattipari sallitaan
@@ -179,7 +179,7 @@ public class TRAI_26_X1_test {
         int i2 = i1;
         while (i1 == i2)
             i2 = rnd.nextInt(n);
-        A[i1] = A[i2];
+        A[i1] = (int) (A[i2]);
 
     }
 
