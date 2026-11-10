@@ -183,7 +183,6 @@ public class TRAI_26_t9_10_skeleton {
 
             if (Bcopy.contains(alkio)) {
                 loytyi = true;
-                // O(1)!
             }
             else {
                 iteraattori.remove();

@@ -1,6 +1,7 @@
 package com.example.trai.VKO_2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TRAI_26_X2_sormuhei implements TRAI_26_X2 {
     //                  ^^^^^
@@ -28,14 +29,82 @@ public class TRAI_26_X2_sormuhei implements TRAI_26_X2 {
      */
     @Override
     public ArrayList<Integer> unionOfSortedLists(ArrayList<Integer> list1, ArrayList<Integer> list2) {
+
         ArrayList<Integer> result = new ArrayList<>();
 
-        // TODO
+        Iterator<Integer> iterA = list1.iterator();
+        Iterator<Integer> iterB = list2.iterator();
 
-        // make a careful plan _before_ you write anything here
-        // then transfer the plan to working code
+        /*
+        jos lista1 on tyhjä, lisää lista 2
+        jos lista 2 on tyhjä, lisää lista1
 
-        // use the fact that the lists are in ascending order _aready_ in the plan!
+        jos i <= j
+        lisää i,
+        kasvata i
+        muuten lisää j
+        kasvata j
+
+        while true
+        jos i >= listan koko
+        jos lista2 j equals result get sice -1
+        add j
+        j++
+
+
+        jos j >= list 2 size
+            niin kauan kun i < list1 size
+            i equals tulos get result size -1
+            break
+
+        jos i <= j --> tulokseen i ja kasvata i
+        muuten lisää j
+
+
+
+         */
+
+
+        // Tarkistetaan, ovatko listat tyhjiä
+        if (!iterA.hasNext()) {
+            return new ArrayList<>(list2);
+        }
+        if (!iterB.hasNext()) {
+            return new ArrayList<>(list1);
+        }
+
+        int i  = iterA.next();
+        int j = iterB.next();
+
+        while (true) {
+
+            if (i < j ) {
+                if (result.isEmpty() || result.get(result.size() - 1) != i) {
+                    result.add(i);
+                }
+
+            } else if (j < i) {
+                if (result.isEmpty() || result.get(result.size() - 1) != j) {
+                    result.add(j);
+                }
+
+                if (iterB.hasNext()) {
+                    j = iterB.next();
+                } else {
+                    if (result.isEmpty() || result.get(result.size() - 1) != i) {
+                        result.add(i);
+                    }
+
+                    if (iterA.hasNext() && iterB.hasNext()) {
+                        i = iterA.next();
+                        j = iterB.next();
+                    } else {
+                        break;
+                    }
+                }
+            }}
+
+        // use the fact that the lists are in ascending order _already_ in the plan!
 
         return result;
     }
