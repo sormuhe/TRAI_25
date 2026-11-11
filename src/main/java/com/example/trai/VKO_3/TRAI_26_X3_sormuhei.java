@@ -47,79 +47,33 @@ public class TRAI_26_X3_sormuhei implements TRAI_26_X3 {
         E nykyinenA = listIteratorA.next();
         E nykyinenB = listIteratorB.next();
 
-        while (true) {
+        while (listIteratorB.hasNext()) {
             if (nykyinenA.compareTo(nykyinenB) < 0) {
-
-                    // A:n alkio on pienempi.
-                    // Siirrytään A:ssa seuraavaan alkioon.
-                if (listIteratorA.hasNext()) {
+                if (!listIteratorA.hasNext()) {
                     nykyinenA = listIteratorA.next();
                 } else {
-                        // A:n loppu saavutettu: lisätään B:n loppu.
                     listIteratorA.add(nykyinenB);
-
-                    while (listIteratorB.hasNext()) {
-                        listIteratorA.add(listIteratorB.next());
-                    }
-                    return;
+                    listIteratorA.add(listIteratorB.next());
+                    break;
                 }
+            } else if (nykyinenA.compareTo(nykyinenB) == 0) {
+                nykyinenB = listIteratorB.next();
+            }
+            if (listIteratorB.hasNext()) {
+                nykyinenB = listIteratorB.next();
+            } else {
+                break;
+            }
 
-                } else if (nykyinenA.compareTo(nykyinenB) == 0) {
-
-                    // Arvo löytyy A:sta.
-                    // Ohitetaan kaikki samanarvoiset B:n alkiot.
-                    E kasiteltyB = nykyinenB;
-                    boolean loytyiSeuraava = false;
-
-                    while (listIteratorB.hasNext()) {
-                        E seuraavaB = listIteratorB.next();
-
-                        if (kasiteltyB.compareTo(seuraavaB) == 0) {
-                            continue;
-                        }
-
-                        nykyinenB = seuraavaB;
-                        loytyiSeuraava = true;
-                        break;
-                    }
-
-                    if (!loytyiSeuraava) {
-                        return;
-                    }
-
-                } else {
-
-                    // B:n arvo on pienempi kuin A:n.
-                    // Lisätään B:n arvo ennen nykyistä A:n alkiota.
-                    E lisattava = nykyinenB;
-
-                    listIteratorA.previous();
-                    listIteratorA.add(nykyinenB);
-
-                    // Lisätään kaikki samanarvoiset B:n duplikaatit.
-                    boolean loytyiSeuraava = false;
-
-                    while (listIteratorB.hasNext()) {
-                        E seuraavaB = listIteratorB.next();
-
-                        if (lisattava.compareTo(seuraavaB) == 0) {
-                            listIteratorA.add(seuraavaB);
-                        } else {
-                            nykyinenB = seuraavaB;
-                            loytyiSeuraava = true;
-                            break;
-                        }
-                    }
-
-                    if (!loytyiSeuraava) {
-                        return;
-                    }
-
-                    // Palautetaan A:n iteraattori nykyisen A-alkion jälkeen.
-                    listIteratorA.next();
-                }
+            if (listIteratorA.hasNext()) {
+                nykyinenA = listIteratorA.next();
+            } else {
+                listIteratorA.add(nykyinenB);
+                listIteratorA.add(listIteratorB.next());
             }
         }
-
     }
+}
+
+
 
