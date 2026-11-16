@@ -90,6 +90,30 @@ public class TRAI_26_t14_15_skeleton {
 
         // TODO
         // see lecture 7 for the algorithm
+
+        boolean lisatty = false;
+
+        /*
+        jos juuri on null
+        solmu on uusi puusolmu
+        aseta solmu
+        palauta tosi
+
+        muuten ...
+
+        puusolmu on nykyinen, hae juuri
+
+        niin kauan kun lisatty on false
+        jos nykyinen on sama kuin x palauta false
+        muuten nykyinen on x > 0
+
+        jos nykyinen vasen lapsi on null
+        puusolmu on solmu x
+        nykyinen on aseta solmu vasemmaksi lapseksi
+        lisatty true
+
+         */
+
         return false;
 
     } // inorderInsert()

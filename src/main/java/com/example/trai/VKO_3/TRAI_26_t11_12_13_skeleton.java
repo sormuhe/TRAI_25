@@ -82,9 +82,31 @@ public class TRAI_26_t11_12_13_skeleton {
      */
     public static <E> int removeConsecutiveDuplicates11(ArrayList<E> AL) {
 
-        // TODO
+        int poistettavat = 0;
+        int i = 0;  // säilytettävän indeksi
 
-        return 0;
+        for (int j = 1; j < AL.size(); j++) {       //j aloitus indeksistä 1, siirretään jokaisella kierroksella
+
+            if (AL.get(i).equals(AL.get(j))) { // j on käsiteltävänä oleva alkio
+                poistettavat++;
+            } else  {                          // jos alkiot eivät ole samat
+                i++;                           // siirretään i:tä
+                AL.set(i, AL.get(j));       // sijoitetaan siihen j:n alkio
+            }
+        }
+
+        // poistetaan niin monta lopusta, kuin laskuria on kasvatettu
+        for (int k = 0; k < poistettavat; k++) {
+            AL.removeLast();
+        }
+
+        /*
+        while poistettavat > 0
+        AL.removelast
+        poistettavat -= 1
+         */
+
+        return poistettavat;
     }
 
     /**
@@ -102,8 +124,24 @@ public class TRAI_26_t11_12_13_skeleton {
 
         // TODO
 
-        return 0;
-    }
+        ListIterator<E> listIterator = LL.listIterator();
+        int poistettavat = 0;
+
+        E edeltaja = listIterator.next();
+
+        while (listIterator.hasNext()) {
+            E seuraava = listIterator.next();
+
+            if (seuraava.equals(edeltaja)) {
+                listIterator.remove();
+                poistettavat++;
+            } else {                          // jos alkiot eivät ole samat
+                edeltaja = seuraava;
+            }
+        }
+            return poistettavat;
+        }
+
 
     /**
      * Removes consecutive duplicate elements from the specified list in place.
@@ -121,7 +159,27 @@ public class TRAI_26_t11_12_13_skeleton {
 
         // TODO
 
-        return 0;
+        ListNode <E> p = TL.first();
+        int poisteltu = 0;
+
+        while (p != TL.EOL) {                       //jos listassa on asiaa
+
+            if (p.next() == TL.EOL) {               //jos ei oo listassa mittää, ei aloteta
+                break;
+            }
+
+            E eka = p.getElement();                 //haetaan p:n alkio
+            E seuraava = p.next().getElement();     // haetaan p.next alkio toiseen
+
+            if (eka.equals(seuraava)) {             // jos ne nyt tuppaa olee samat
+                TL.remove(p.next());                //poistetaan  seuraava
+                poisteltu++;                        // laskurin kasvu
+            } else {
+                p = p.next();                       //sijoitetaan p seuraavaan asemaan
+            }
+        }
+
+        return poisteltu;
     }
 
 

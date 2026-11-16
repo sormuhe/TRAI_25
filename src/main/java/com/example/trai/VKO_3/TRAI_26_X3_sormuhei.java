@@ -1,5 +1,4 @@
 package com.example.trai.VKO_3;
-
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -8,7 +7,10 @@ public class TRAI_26_X3_sormuhei implements TRAI_26_X3 {
 
     /**
      * SELF-EVALUATION HERE:
+     * Tehtävä ei toimi oikein, eikä se lisää siis kaikkia alkioita oikein listaan.
      *
+     * Jossain vaiheessa toimi melkein oikein.
+     * Aika loppui kesken.
      *
      *
      */
@@ -31,11 +33,6 @@ public class TRAI_26_X3_sormuhei implements TRAI_26_X3 {
         ListIterator<E> listIteratorA = A.listIterator();
         ListIterator<E> listIteratorB = B.listIterator();
 
-            // Jos B on tyhjä, ei tehdä mitään.
-        if (!listIteratorB.hasNext()) {
-            return;
-        }
-
             // Jos A on tyhjä, lisätään kaikki B:n alkiot.
         if (!listIteratorA.hasNext()) {
             while (listIteratorB.hasNext()) {
@@ -44,32 +41,30 @@ public class TRAI_26_X3_sormuhei implements TRAI_26_X3 {
             return;
         }
 
-        E nykyinenA = listIteratorA.next();
-        E nykyinenB = listIteratorB.next();
-
         while (listIteratorB.hasNext()) {
-            if (nykyinenA.compareTo(nykyinenB) < 0) {
-                if (!listIteratorA.hasNext()) {
-                    nykyinenA = listIteratorA.next();
-                } else {
-                    listIteratorA.add(nykyinenB);
-                    listIteratorA.add(listIteratorB.next());
+
+            E arvoB = listIteratorB.next();
+            boolean lisatty = false;
+
+            while (listIteratorA.hasNext()) {
+
+                E arvoA = listIteratorA.next();
+
+                if (arvoA.compareTo(arvoB) > 0) {
+                    listIteratorA.previous();
+                    listIteratorA.add(arvoB);
+                    lisatty = true;
+                    break;
+
+                } else if (arvoA.compareTo(arvoB) == 0) {
+                    listIteratorA.previous();
+                    lisatty = true;
                     break;
                 }
-            } else if (nykyinenA.compareTo(nykyinenB) == 0) {
-                nykyinenB = listIteratorB.next();
-            }
-            if (listIteratorB.hasNext()) {
-                nykyinenB = listIteratorB.next();
-            } else {
-                break;
             }
 
-            if (listIteratorA.hasNext()) {
-                nykyinenA = listIteratorA.next();
-            } else {
-                listIteratorA.add(nykyinenB);
-                listIteratorA.add(listIteratorB.next());
+            if (!lisatty) {
+                listIteratorA.add(arvoB);
             }
         }
     }
