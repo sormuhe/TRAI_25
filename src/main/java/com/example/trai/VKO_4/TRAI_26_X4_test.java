@@ -41,7 +41,7 @@ public class TRAI_26_X4_test {
 
         // 3 node ordered tree
         ok &= testX4(new ArrayList<>(Arrays.asList(1, 2, 3)), true, print);
-        // 3 node unordered tree (juuren lapset vÃ¤Ã¤rÃ¤ssÃ¤ jÃ¤rjestyksessÃ¤)
+        // 3 node unordered tree (juuren lapset väärässä järjestyksessä)
         ok &= testX4(new ArrayList<>(Arrays.asList(1, 3, 2)), false, print);
 
         // 5 node ordered tree

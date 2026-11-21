@@ -221,7 +221,7 @@ public class TRAI_26_t18_skeleton {
         while (true) {
 
             if (x.compareTo(n.getElement()) == 0)
-                // x already in tree, no add
+                // x already in tree, no add, no sugar
                 return false;
 
             else if (x.compareTo(n.getElement()) < 0) {

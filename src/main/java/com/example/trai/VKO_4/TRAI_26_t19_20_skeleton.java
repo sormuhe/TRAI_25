@@ -26,7 +26,7 @@ public class TRAI_26_t19_20_skeleton {
             seed = Integer.parseInt(args[2]);
         Random r = new Random(n );
 
-        // example sets of the 1st grade book, find the correct solution manually
+        // example sets of the 1st grade book, find the correct solution manually, don't underestimate us
         Set<Integer> set19 = inTwoNotInTwo( Set.of(1, 3, 5, 6, 7, 8), Set.of(2, 4, 5, 6, 7, 8),
                 Set.of(2, 3, 4, 6), Set.of(1, 4, 6, 7, 8, 9) );
         System.out.println("set19 example = " + set19);

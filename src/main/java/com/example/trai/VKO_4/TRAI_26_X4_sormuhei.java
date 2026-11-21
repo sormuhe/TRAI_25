@@ -43,7 +43,7 @@ public class TRAI_26_X4_sormuhei implements TRAI_26_X4 {
             return true;
         }
 
-        // vasen alipuu
+        // vasen alipuinen, selevittele
         if (!sisaJarjestys(solmu.getLeftChild(), edellinen)) {
             return false;
         }

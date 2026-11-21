@@ -110,15 +110,15 @@ public class TRAI_26_t17_skeleton {
             return solmu;
 
         } else {
-            BTreeNode<E> solomu = n;
+            BTreeNode<E> solomuloinen = n;
             BTreeNode<E> vanhempi = n.getParent();
 
             while (vanhempi != null) {
-                if (solomu == vanhempi.getRightChild()) {
+                if (solomuloinen == vanhempi.getRightChild()) {
                     return vanhempi;
                 }
 
-                solomu = vanhempi;
+                solomuloinen = vanhempi;
                 vanhempi = vanhempi.getParent();
             }
         }
