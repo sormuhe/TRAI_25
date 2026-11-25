@@ -93,9 +93,10 @@ public class TRAI_26_t19_20_skeleton {
         Set<E> result = new HashSet<>();
 
         // TODO
-        // use set operations, do not iterate over elements
-        // plan carefully, use Venn diagrams when planning
-
+        result.addAll(isHere1);
+        result.retainAll(isHere2);
+        result.removeAll(notHere1);
+        result.removeAll(notHere2);
         return result;
 
     }
